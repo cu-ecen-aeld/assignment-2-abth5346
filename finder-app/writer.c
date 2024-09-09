@@ -1,5 +1,6 @@
 /* 
 writer.c
+AEDS Assignment 2
 By Abel Thomas
 
 Takes in two input arguments which includes 
@@ -7,7 +8,6 @@ a file to write to and a string to write the file.
 
 Sources:
 https://www.geeksforgeeks.org/basics-file-handling-c/
-
 */
 
 #include <stdio.h>
