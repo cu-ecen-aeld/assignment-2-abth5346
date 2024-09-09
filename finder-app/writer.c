@@ -18,15 +18,16 @@ https://www.geeksforgeeks.org/basics-file-handling-c/
 
 int main(int argc, char** argv){
 
-    //check for 3 arguments
+    char * command       = argv[0];
+    char * file_to_write = argv[1];
+    char * str_to_write  = argv[2];
+    
+    //check for 3 required arguments
     if(argc != 3){
-        syslog(LOG_ERR, "Invalid number of arguments");
+        syslog(LOG_ERR, "Invalid number of arguments, should expect: %s <filename> <string>", command);
         //fprintf(stderr, "Invalid number of arguments");
         return 1;
     }
-
-    char * file_to_write = argv[1];
-    char * str_to_write = argv[2];
 
     //open file with read/write capabilities and overwrites
     FILE *fd = fopen(file_to_write, "w+");
@@ -37,8 +38,8 @@ int main(int argc, char** argv){
     if (fd == NULL) {
         //error
 
-        syslog(LOG_ERR, "Error could not open file");
-        fprintf(stderr, "Error could not open file");
+        syslog(LOG_ERR, "Error could not open file specified <%s>", file_to_write);
+        //fprintf(stderr, "Error could not open file");
         return 1;
     }
 
